@@ -1,0 +1,107 @@
+M. Vignesh
+ +91-9092759979
+# email
++ Chennai
+ï linkedin
+§ github
+ portfolio
+Summary
+Aspiring AI and Data Science engineer with a strong focus on digital twin systems, autonomous motion planning, and
+generative AI applications. Finalist (Top 16 among 18,114+ teams) at KPIT Sparkle 2026 as Team Lead. Experienced in
+rapid prototyping and building scalable AI-driven systems including intelligent assistants and simulation-based solutions.
+Education
+RMK Engineering College
+B.Tech AI & DS (2023–2027)
+CGPA: 7.80
+Sri
+Ram
+Dayal
+Khemka
+Vivekananda Vidyalaya
+Class XII – 80.2% (2023)
+Class X – 84.2% (2021)
+Skills
+Python, C++, Java
+TensorFlow, NLP, Deep Learning
+Pandas, NumPy, Power BI
+Git, GitHub, Colab
+Certifications
+NPTEL:
+Python,
+Networks,
+Cloud
+Computing, Soft Skills
+Oracle: AI Foundations, Generative AI,
+Data Science
+Infosys Springboard:
+Artificial In-
+telligence,
+Machine
+Learning,
+Deep
+Learning, Reinforcement Learning, Neu-
+ral Networks
+Qualcomm Academy:
+AI Upskilling
+Certificate
+(Technical
+Foundations),
+Hands-On Development from Model to
+Application
+Achievements
+KPIT Sparkle 2026 Finalist
+Top
+16
+/
+18,114+
+teams
+as
+Team
+Lead,
+demonstrating strong problem-
+solving and system design skills
+CMRIT 24hr Hackathon
+Built an AI-based solution under strict
+time constraints in a competitive envi-
+ronment
+Tech Conference – BIT
+Explored advancements in AI, data sci-
+ence, and emerging engineering technolo-
+gies
+Projects
+Digital Twin–based Adaptive Motion Planner
+Designed a simulation-driven system for autonomous vehicles enabling real-
+time trajectory optimization and sim-to-real validation with enhanced safety
+and robustness.
+ORION – Multi-Modal AI Assistant
+Developed an intelligent assistant supporting voice, text, and API-based
+automation with contextual memory for real-time task execution and per-
+sonalization.
+GenAI Music App
+Built an advanced generative AI system for music creation, mood-based
+recommendations, and personalized content generation.
+JARVIS AI Assistant
+Created a Python-based voice assistant integrating APIs for real-time re-
+sponses and automation.
+ATMOSPHEREX – AI Travel Platform
+Developed a system for personalized travel recommendations and optimized
+route planning.
+Eco-Driving and Pollution Tracker
+Built a system to analyze driving patterns and estimate emissions to promote
+sustainable driving.
+Intelligent Skin Condition Diagnosis using Deep Learning with Ex-
+plainable AI
+Developed a deep learning-based system for skin disease detection with ex-
+plainable AI techniques to provide transparent and interpretable predictions.
+Product Website Development (UI/UX Focused)
+Designed and developed responsive product websites with modern UI/UX
+principles, smooth interactions, and optimized performance using rapid pro-
+totyping workflows.
+Experience
+Infosys Springboard Internship
+Aug 2025 – Oct 2025
+Developed an AI-based shipment prediction model improving logistics effi-
+ciency.
+AICTE Shell Edunet Internship
+Jun 2025 – Jul 2025
+Worked on AI and data analytics solutions focused on sustainability.
