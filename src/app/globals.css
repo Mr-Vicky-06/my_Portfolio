@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0A0F1C;
+  --foreground: #e2e8f0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for modern, mechanical look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0F1C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3B82F6;
+}
+
+.mechanical-panel {
+  @apply bg-mechanical-panel border border-mechanical-border rounded-lg overflow-hidden backdrop-blur-sm relative;
+}
+
+.mechanical-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+.glowing-edge {
+  @apply shadow-[0_0_10px_rgba(59,130,246,0.2)] border border-[#1e3a8a] transition-all duration-300;
+}
+
+.glowing-edge:hover {
+  @apply shadow-[0_0_20px_rgba(59,130,246,0.5),inset_0_0_10px_rgba(59,130,246,0.2)] border-[#3b82f6];
+}
+
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}

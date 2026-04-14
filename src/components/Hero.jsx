@@ -1,96 +1,157 @@
-import React, { Suspense, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Sphere, MeshDistortMaterial } from '@react-three/drei';
-import { motion } from 'framer-motion';
+"use client";
 
-const AnimatedObject = () => {
-  const mesh = useRef();
+import { useRef, useEffect, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { motion } from "framer-motion";
+import { OrbitControls, Environment, Float, Sparkles } from "@react-three/drei";
+import * as THREE from "three";
+
+// Mechanical fragments forming an abstract core
+function CoreFragments({ assembled }) {
+  const groupRef = useRef();
+
   useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    mesh.current.rotation.x = Math.cos(t / 4) / 2;
-    mesh.current.rotation.y = Math.sin(t / 4) / 2;
-    mesh.current.rotation.z = Math.sin(t / 4) / 2;
+    const time = state.clock.getElapsedTime();
+    if (groupRef.current) {
+      groupRef.current.rotation.y = time * 0.2;
+      groupRef.current.rotation.z = Math.sin(time * 0.1) * 0.1;
+
+      groupRef.current.children.forEach((child, i) => {
+        if (!child.userData.initialPos) return;
+
+        const targetPos = child.userData.initialPos;
+        const explodedPos = child.userData.explodedPos;
+        
+        // Interpolate between exploded and assembled state
+        const target = assembled ? targetPos : explodedPos;
+        child.position.lerp(target, 0.05);
+
+        if (assembled) {
+          // slight breathing effect
+          child.position.y = targetPos.y + Math.sin(time * 2 + i) * 0.05;
+        }
+      });
+    }
   });
 
-  return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-      <Sphere ref={mesh} args={[1, 100, 200]} scale={2}>
-        <MeshDistortMaterial
-          color="#0071e3"
-          attach="material"
-          distort={0.4}
-          speed={1.5}
-          roughness={0.2}
-          metalness={0.8}
-        />
-      </Sphere>
-    </Float>
-  );
-};
+  const parts = [];
+  for (let i = 0; i < 20; i++) {
+    const phi = Math.acos(-1 + (2 * i) / 20);
+    const theta = Math.sqrt(20 * Math.PI) * phi;
 
-export const Hero = () => {
+    const r = 1.5;
+    const x = r * Math.cos(theta) * Math.sin(phi);
+    const y = r * Math.sin(theta) * Math.sin(phi);
+    const z = r * Math.cos(phi);
+
+    const initialPos = new THREE.Vector3(x, y, z);
+    const explodedPos = initialPos.clone().multiplyScalar(3 + Math.random() * 2);
+
+    parts.push(
+      <mesh
+        key={i}
+        userData={{ initialPos, explodedPos }}
+        position={explodedPos}
+        castShadow
+        receiveShadow
+      >
+        <boxGeometry args={[0.4, 0.3, 0.6]} />
+        <meshStandardMaterial
+          color={i % 3 === 0 ? "#06B6D4" : "#1E293B"}
+          metalness={0.8}
+          roughness={0.2}
+          envMapIntensity={2}
+        />
+      </mesh>
+    );
+  }
+
   return (
-    <section className="section-padding container" style={{ minHeight: '100svh', display: 'flex', alignItems: 'center', position: 'relative' }}>
-      <div className="hero-content">
+    <group ref={groupRef}>
+      {/* Central orb */}
+      <mesh userData={{ initialPos: new THREE.Vector3(0,0,0), explodedPos: new THREE.Vector3(0,0,0) }}>
+        <sphereGeometry args={[0.8, 32, 32]} />
+        <meshStandardMaterial color="#0A0F1C" metalness={1} roughness={0.1} />
+      </mesh>
+      {parts}
+    </group>
+  );
+}
+
+export default function Hero() {
+  const [assembled, setAssembled] = useState(false);
+  
+  useEffect(() => {
+    // Trigger assembly after short delay corresponding to title animation
+    const timer = setTimeout(() => setAssembled(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const titleWords = ["Vignesh", "/", "AI", "Engineer"];
+
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05 },
+    },
+  };
+
+  const childVariant = {
+    visible: { opacity: 1, y: 0, rotateX: 0 },
+    hidden: { opacity: 0, y: 40, rotateX: 90 },
+  };
+
+  return (
+    <section className="relative w-full min-h-[80vh] flex flex-col md:flex-row items-center justify-between">
+      <div className="flex-1 z-10 space-y-6">
         <motion.div
-           initial={{ opacity: 0, scale: 0.8 }}
-           animate={{ opacity: 1, scale: 1 }}
-           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-           style={{
-             width: 'clamp(180px, 20vw, 220px)',
-             height: 'clamp(180px, 20vw, 220px)',
-             borderRadius: '50%',
-             overflow: 'hidden',
-             border: '4px solid var(--glass-border)',
-             boxShadow: '0 0 40px rgba(0, 113, 227, 0.2)',
-             flexShrink: 0
-           }}
+          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white flex flex-wrap gap-x-4 gap-y-2 perspective-[1000px] leading-tight"
+          variants={container}
+          initial="hidden"
+          animate="visible"
         >
-          <img 
-            src="/certificates/vignesh_profile.png" 
-            alt="Vignesh" 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
-            onError={(e) => { e.target.parentElement.style.display = 'none'; }}
-          />
+          {titleWords.map((word, wordIndex) => (
+            <span key={wordIndex} className="whitespace-nowrap flex">
+              {Array.from(word).map((letter, letterIndex) => (
+                <motion.span
+                  key={letterIndex}
+                  variants={childVariant}
+                  className="inline-block"
+                  style={{ transformOrigin: "bottom" }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </span>
+          ))}
         </motion.div>
 
-        <div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ color: 'var(--accent-color)', fontWeight: 500, marginBottom: '16px' }}
-          >
-            AI Systems & Automation Engineer
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="title-xl text-gradient"
-          >
-            Vignesh
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            style={{ fontSize: '1.5rem', color: 'var(--text-secondary)', maxWidth: '600px' }}
-          >
-            Digital Twins · Autonomous Systems · Generative AI
-          </motion.p>
-        </div>
+        <motion.p
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 2, duration: 0.8, ease: "easeOut" }}
+          className="text-lg md:text-xl text-mechanical-accent max-w-xl border-l-2 border-mechanical-accent pl-4 font-mono uppercase tracking-widest"
+        >
+          Building intelligent, scalable digital systems
+        </motion.p>
       </div>
-      <div style={{ position: 'absolute', right: '-10%', top: '50%', transform: 'translateY(-50%)', width: '600px', height: '600px', opacity: 0.8 }}>
-        <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+
+      <div className="flex-1 w-full h-[50vh] md:h-[80vh] relative z-0">
+        <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
+          <Environment preset="city" />
           <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
-          <pointLight position={[-10, -10, -5]} color="#0071e3" intensity={2} />
-          <Suspense fallback={null}>
-            <AnimatedObject />
-          </Suspense>
+          <directionalLight position={[10, 10, 5]} intensity={1} color="#06B6D4" />
+          <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#3B82F6" />
+          
+          <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
+            <CoreFragments assembled={assembled} />
+          </Float>
+          
+          <Sparkles count={100} scale={10} size={2} color="#06B6D4" opacity={0.2} speed={0.4} />
+          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
         </Canvas>
       </div>
     </section>
   );
-};
+}

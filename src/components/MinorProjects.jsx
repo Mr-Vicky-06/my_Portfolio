@@ -1,84 +1,93 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Code, Layers, MessageSquare, Music, Map, ShieldCheck, Layout } from 'lucide-react';
+"use client";
 
+import { motion } from "framer-motion";
+import { FolderGit2, ExternalLink } from "lucide-react";
+
+// The Chess_AI is added as requested, alongside other minor projects from the resume
 const minorProjects = [
   {
-    title: 'GenAI Music App',
-    shortDesc: 'Advanced generative AI for music creation and mood-based recommendations.',
-    fullDesc: 'Built an advanced generative AI system for music creation, mood-based recommendations, and personalized content generation using deep learning models specialized in audio processing.',
-    icon: <Music size={32} />,
-    color: '#0071e3',
-    tags: ['GenAI', 'Python', 'Audio Processing']
+    title: "Chess AI Engine",
+    description: "An artificial intelligence system utilizing evaluation heuristics or ML techniques to optimally play chess.",
+    github: "https://github.com/Mr-Vicky-06/Chess_AI",
+    tags: ["Python", "AI", "Algorithms"]
   },
   {
-    title: 'JARVIS AI Assistant',
-    shortDesc: 'Python-based voice assistant with real-time response and automation.',
-    fullDesc: 'Created an intelligent voice assistant integrating various APIs for real-time information retrieval, home automation, and task execution using sophisticated NLP techniques.',
-    icon: <MessageSquare size={32} />,
-    color: '#ff3b30',
-    tags: ['Python', 'NLP', 'APIs']
+    title: "JARVIS 0.7 Assistant",
+    description: "Python-based voice assistant integrating multiple APIs for real-time automation and querying.",
+    github: "https://github.com/Mr-Vicky-06/JARVIS0.7",
+    tags: ["Python", "Voice APIs"]
   },
   {
-    title: 'ATMOSPHEREX',
-    shortDesc: 'AI platform for personalized travel recommendations and route planning.',
-    fullDesc: 'Developed a comprehensive system for personalized travel recommendations and optimized route planning, incorporating weather data and user preferences for a better travel experience.',
-    icon: <Map size={32} />,
-    color: '#34c759',
-    tags: ['React', 'Data Science', 'TravelTech']
+    title: "ATMOSPHEREX",
+    description: "Personalized AI travel platform with optimized route planning.",
+    github: "#",
+    tags: ["Machine Learning", "Routing"]
   },
   {
-    title: 'Intelligent Skin Diagnosis',
-    shortDesc: 'Deep learning system for skin disease detection with XAI.',
-    fullDesc: 'Developed a deep learning-based system for skin disease detection with explainable AI (XAI) techniques to provide transparent and interpretable predictions for medical use cases.',
-    icon: <ShieldCheck size={32} />,
-    color: '#5856d6',
-    tags: ['Deep Learning', 'XAI', 'Healthcare AI']
+    title: "Eco-Driving Tracker",
+    description: "Driving pattern analyzer to estimate emissions and promote sustainable habits.",
+    github: "#",
+    tags: ["Data Analytics", "IoT simulation"]
   },
   {
-    title: 'Product Website Development',
-    shortDesc: 'UI/UX focused responsive product websites with modern workflows.',
-    fullDesc: 'Designed and developed responsive product websites with modern UI/UX principles, smooth interactions, and optimized performance using rapid prototyping workflows and modern CSS techniques.',
-    icon: <Layout size={32} />,
-    color: '#af52de',
-    tags: ['UI/UX', 'React', 'Rapid Prototyping']
+    title: "Intelligent Skin Diagnosis",
+    description: "Deep learning system for skin disease detection using explainable AI to ensure interpretable predictions.",
+    github: "https://github.com/Mr-Vicky-06/Skin_Disease",
+    tags: ["TensorFlow", "XAI", "Computer Vision"]
+  },
+  {
+    title: "Flowchart Argo",
+    description: "Algorithm-based flowchart mapping and generation framework.",
+    github: "https://github.com/Mr-Vicky-06/floatChar_argo",
+    tags: ["Logic Mapping", "Flowchart", "Algo"]
+  },
+  {
+    title: "Corvette E-Ray Product UI",
+    description: "Sleek, high-performance product website mockups specifically targeting automotive UX design.",
+    github: "https://github.com/Mr-Vicky-06/Chevrolet_Corvette_E-Ray",
+    tags: ["Web Design", "UI/UX", "Product"]
   }
 ];
 
-export const MinorProjects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
-
+export default function MinorProjects() {
   return (
-    <section className="section-padding container">
-      <h2 className="title-lg text-gradient" style={{ textAlign: 'center', marginBottom: '64px' }}>Specialized Projects</h2>
-      
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '32px' }}>
-        {minorProjects.map((project, index) => (
+    <section className="space-y-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex items-center gap-4"
+      >
+        <FolderGit2 className="text-mechanical-accent w-6 h-6" />
+        <h2 className="text-2xl font-mono tracking-wider uppercase text-gray-300">Subsidiary Modules</h2>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {minorProjects.map((proj, idx) => (
           <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}
-            onClick={() => setSelectedProject(project)}
-            style={{
-              padding: '32px',
-              borderRadius: '24px',
-              background: 'var(--card-bg)',
-              border: '1px solid var(--glass-border)',
-              cursor: 'pointer',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '20px',
-              transition: 'var(--transition-smooth)'
-            }}
+            key={proj.title}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            whileHover={{ y: -5, scale: 1.02 }}
+            transition={{ duration: 0.4, delay: idx * 0.1 }}
+            viewport={{ once: true }}
+            className="mechanical-panel p-6 group transition-all duration-300 hover:glowing-edge"
           >
-            <div style={{ color: project.color }}>{project.icon}</div>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 600 }}>{project.title}</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>{project.shortDesc}</p>
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              {project.tags.slice(0, 2).map((tag, idx) => (
-                <span key={idx} style={{ fontSize: '0.75rem', padding: '4px 8px', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', background: 'rgba(255,255,255,0.05)' }}>
+            <div className="flex justify-between items-start mb-4">
+              <FolderGit2 className="text-mechanical-border group-hover:text-mechanical-accentCyan transition-colors" />
+              {proj.github && (
+                <a href={proj.github} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors">
+                  <ExternalLink size={18} />
+                </a>
+              )}
+            </div>
+            
+            <h3 className="text-lg font-bold text-gray-100 mb-2 group-hover:text-white transition-colors">{proj.title}</h3>
+            <p className="text-sm text-gray-400 mb-6 flex-grow">{proj.description}</p>
+            
+            <div className="flex flex-wrap gap-2 mt-auto">
+              {proj.tags.map(tag => (
+                <span key={tag} className="text-[10px] font-mono text-mechanical-accent bg-mechanical-accent/10 px-2 py-1 rounded">
                   {tag}
                 </span>
               ))}
@@ -86,76 +95,6 @@ export const MinorProjects = () => {
           </motion.div>
         ))}
       </div>
-
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedProject(null)}
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              background: 'rgba(0,0,0,0.8)',
-              backdropFilter: 'blur(10px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '24px',
-              zIndex: 2000
-            }}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              style={{
-                width: '100%',
-                maxWidth: '600px',
-                background: 'var(--bg-secondary)',
-                border: '1px solid var(--glass-border)',
-                borderRadius: '32px',
-                padding: '40px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}
-            >
-              <button 
-                onClick={() => setSelectedProject(null)}
-                style={{ position: 'absolute', top: '24px', right: '24px', background: 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#fff' }}
-              >
-                <X size={20} />
-              </button>
-              
-              <div style={{ color: selectedProject.color, marginBottom: '24px' }}>{selectedProject.icon}</div>
-              <h2 className="title-lg" style={{ marginBottom: '24px', fontSize: '2.5rem' }}>{selectedProject.title}</h2>
-              <p style={{ fontSize: '1.125rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '32px' }}>{selectedProject.fullDesc}</p>
-              
-              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '32px' }}>
-                {selectedProject.tags.map((tag, idx) => (
-                  <span key={idx} style={{ padding: '8px 16px', background: 'rgba(255,255,255,0.05)', borderRadius: '24px', fontSize: '0.875rem', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              
-              <div style={{ display: 'flex', gap: '16px' }}>
-                <a href="#" style={{ padding: '12px 24px', background: selectedProject.color, borderRadius: '24px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <ExternalLink size={18} /> View Case Study
-                </a>
-                <a href="#" style={{ padding: '12px 24px', border: '1px solid var(--glass-border)', borderRadius: '24px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)' }}>
-                  <Code size={18} /> Source Code
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
-};
+}
