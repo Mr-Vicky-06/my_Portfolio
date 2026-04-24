@@ -1,87 +1,84 @@
-# 🌌 Vignesh's Premium AI Portfolio
+# 🤖 Cyber-Mechanical Intelligence Portfolio
 
 <div align="center">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.dot-js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Cybertron-Interface-red?style=for-the-badge&logo=transformers&logoColor=white" />
+  <img src="https://img.shields.io/badge/Next.js_14-000000?style=for-the-badge&logo=next.dot-js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
   <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
 </div>
 
 ---
 
-## 🚀 Overview
+## ⚡ The Concept: "More Than Meets The Eye"
 
-Welcome to my high-end, **Apple-style scrollytelling portfolio**. This project is designed as a premium showcase of my work in **Artificial Intelligence, Data Science, and Autonomous Systems**.
+This is not just a portfolio—it is a **High-Fidelity Cybertronian Interface**. Built with a deep focus on **Mechanical UI/UX**, the platform transforms my technical career into an interactive mission log inspired by the *Transformers* universe.
 
-### ✨ Key Features
-
-- **Apple Minimalist Aesthetic**: A clean, dark-mode UI with meticulous typography and spacing.
-- **3D Hero Engagement**: An interactive, floating 3D orb powered by **React Three Fiber**.
-- **Cinematic Scrollytelling**: Smooth, scroll-triggered animations for project storytelling.
-- **AI-Powered Visuals**: Custom futuristic imagery generated specifically for each project section.
-- **Dynamic Certifications**: A categorized, 5-segment gallery (NPTEL, Oracle, etc.) with a high-end modal viewer.
-- **Responsive & Optimized**: Lightning-fast performance and full responsiveness across all devices.
+Each section is governed by a legendary character theme, creating a cohesive, immersive, and premium narrative experience.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛡️ Character-Based Design Language
 
-- **Frontend**: React (Vite)
-- **Styling**: Vanilla CSS (Custom Glassmorphism Design System)
-- **3D Engine**: Three.js (@react-three/fiber, @react-three/drei)
-- **Animations**: Framer Motion
-- **Automation**: Custom Python data extraction scripts for certificates and resume data.
-
----
-
-## 📂 Project Structure
-
-- `src/components/`: Modular UI components (Hero, Specialized, Certifications, etc.).
-- `src/assets/`: Premium visual assets and 3D objects.
-- `public/certificates/`: Organized repository of professional credentials.
-- `netlify.toml`: Pre-configured for seamless Netlify deployment.
+| Unit | Theme | Designation | Feature |
+| :--- | :--- | :--- | :--- |
+| **Hero Node** | `Optimus Prime` | Command & Control | 3D Mechanical HUD & Tactical Viewer |
+| **Mission Logs** | `Soundwave` | Projects Hub | Intelligent Data Grid & Comms Link |
+| **Sub-Systems** | `Bumblebee` | Minor Modules | High-Speed Subsidiary Repositories |
+| **Achievements** | `Megatron` | Dominance & Honors | Full-Color High-Contrast Certificate Hub |
 
 ---
 
-## 🏁 Getting Started
+## ✨ Advanced System Features
 
-### Prerequisites
+- **Mechanical HUD Interaction**: A 3D-styled head-up display for the profile picture, featuring scanning animations and tactical overlays.
+- **Tactical Resume Portal**: Integrated PDF viewer accessible via the primary "View Resume" command.
+- **Intelligent Tech Cluster**: A high-density, original brand-colored logo grid showcasing full stack capabilities (AI, Web, Simulation).
+- **Energon Progress Monitoring**: Custom scroll indicators and emissive glow effects synchronized with the character themes.
+- **Cyber-Cursor Navigation**: A precision-targeted interactive cursor that responds to mechanical elements.
+- **Fully Responsive Matrix**: Optimized for desktop, mobile, and tablet deployment.
+
+---
+
+## 🛠️ Technical Matrix
+
+- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) & [Vanilla CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **3D Components**: [React Three Fiber](https://r3f.docs.pmnd.rs/) & [Three.js](https://threejs.org/)
+- **Icons**: [Simple Icons](https://simpleicons.org/) & [Lucide React](https://lucide.dev/)
+
+---
+
+## 🏁 Systems Initiation
+
+### 🔌 Prerequisites
 - Node.js (v18+)
 - npm or yarn
 
-### Installation
-1. Clone the repository:
+### 📡 Installation & Setup
+1. **Clone the Matrix**:
    ```bash
    git clone https://github.com/Mr-Vicky-06/my_Portfolio.git
    ```
-2. Install dependencies:
+2. **Install Protocols**:
    ```bash
    npm install
    ```
-3. Run the development server:
+3. **Ignite Development Engine**:
    ```bash
    npm run dev
    ```
 
-### Production Build
-To generate the optimized production bundle:
-```bash
-npm run build
-```
-
 ---
 
-## 📫 Connect with Me
+## 📫 Communication Link
 
 <div align="left">
-  <a href="https://github.com/Mr-Vicky-06/">
-    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
-  </a>
   <a href="https://www.linkedin.com/in/m-vignesh-677915295">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
-  <a href="https://x.com/VigneshM882457">
-    <img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" />
+  <a href="https://github.com/Mr-Vicky-06/">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
   </a>
   <a href="mailto:mageshvignesh2006@gmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
@@ -91,5 +88,5 @@ npm run build
 ---
 
 <p align="center">
-  Built with Passion & Intelligence by <b>Vignesh</b> | © 2026
+  <b>UNIT_ID: VIGNESH</b> | <i>Built with Cybertronian Engineering & AI Intelligence</i> | © 2026
 </p>
