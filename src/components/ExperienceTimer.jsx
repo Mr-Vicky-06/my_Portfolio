@@ -8,21 +8,21 @@ const logs = [
     timestamp: "2025-08-01::10:00:00",
     process: "INFOSYS_SPRINGBOARD_INTERNSHIP",
     status: "SUCCESS",
-    message: "Developed AI-based shipment prediction model improving logistics efficiency.",
+    message: "Developed a machine learning model for shipment time prediction. Improved accuracy by 15% through advanced feature engineering.",
     date: "Aug 2025 - Oct 2025"
   },
   {
     timestamp: "2025-06-01::09:30:00",
     process: "AICTE_SHELL_EDUNET_INTERNSHIP",
     status: "SUCCESS",
-    message: "Implemented AI and data analytics solutions focused on sustainability and efficiency.",
+    message: "Engineered AI/Data analytics pipelines for sustainability use cases, focusing on analytical insight generation.",
     date: "Jun 2025 - Jul 2025"
   },
   {
     timestamp: "2023-09-01::08:00:00",
     process: "ACADEMIC_INITIALIZATION",
     status: "PROCESSING",
-    message: "B.Tech AI & DS at RMK Engineering College. CGPA: 7.80. Learning advanced NN architectures.",
+    message: "B.Tech AI & DS at RMK Engineering College. Specialize in real-time intelligent systems and NN architectures.",
     date: "2023 - 2027"
   }
 ];

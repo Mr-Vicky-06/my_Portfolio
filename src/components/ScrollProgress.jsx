@@ -12,19 +12,24 @@ export default function ScrollProgress() {
 
   return (
     <>
-      {/* Top glowing origin bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-mechanical-accentCyan origin-left z-[1000] shadow-[0_0_15px_rgba(6,182,212,0.8)]"
-        style={{ scaleX }}
-      />
+      {/* Energon Fuel Bar */}
+      <div className="fixed top-0 left-0 right-0 h-[6px] bg-black/40 z-[1000] backdrop-blur-md border-b border-white/5">
+        <motion.div
+          className="h-full bg-gradient-to-r from-optimus-red via-optimus-blue to-cyan-400 origin-left shadow-[0_0_20px_rgba(6,182,212,0.6)]"
+          style={{ scaleX }}
+        >
+          {/* Animated scanline on the progress bar */}
+          <div className="absolute inset-0 bg-white/20 animate-[scan_2s_linear_infinite] opacity-50" />
+        </motion.div>
+      </div>
 
-      {/* Cyberpunk minimal scroll text indicator (Optional) */}
+      {/* Cybertronian minimal scroll text indicator */}
       <motion.div 
-        className="fixed right-4 bottom-4 z-50 text-[10px] font-mono text-mechanical-accentCyan uppercase tracking-[0.2em] [writing-mode:vertical-rl] mix-blend-screen hidden md:block"
-        style={{ opacity: scrollYProgress }}
+        className="fixed right-6 bottom-12 z-50 text-[10px] font-bold font-mono text-cyan-400 uppercase tracking-[0.3em] [writing-mode:vertical-rl] mix-blend-screen hidden md:block"
       >
-        System Initialized
+        <span className="animate-pulse-slow">CORE_ENERGY: ACTIVE</span>
       </motion.div>
     </>
   );
 }
+

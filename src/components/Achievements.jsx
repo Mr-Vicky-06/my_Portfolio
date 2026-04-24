@@ -1,67 +1,116 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Trophy, Award, Zap } from "lucide-react";
+import { Trophy, Award, Zap, Anchor } from "lucide-react";
 
 const achievements = [
   {
     title: "KPIT Sparkle 2026 Finalist",
     highlight: "Top 16 / 18,114+ teams",
-    role: "Team Lead",
-    description: "Demonstrated strong problem-solving and system design skills in a highly competitive national innovation challenge.",
-    icon: Trophy
+    role: "Project Lead",
+    description: "Led the development of a Digital Twin-based motion planning system integrating simulation-driven optimization and real-time decision-making for dynamic environments.",
+    icon: Trophy,
+    image: "/certificates/kpit_sparkle_2026.jpg",
+    accent: "text-megatron-red"
   },
   {
     title: "CMRIT 24hr Hackathon",
-    highlight: "AI Solution Builder",
-    role: "Participant",
-    description: "Built an AI-based solution under strict time constraints in a competitive environment.",
-    icon: Zap
+    highlight: "Sustainability Focus",
+    role: "AI Lead",
+    description: "Designed and developed an AI-driven eco-driving and emission estimation system under real-time constraints, focusing on efficiency and sustainability.",
+    icon: Zap,
+    image: "/certificates/intern_1.png",
+    accent: "text-megatron-purple"
   },
   {
-    title: "Tech Conference – BIT",
-    highlight: "AI & Emerging Tech",
-    role: "Delegate",
-    description: "Explored advancements in AI, data science, and emerging engineering technologies alongside industry experts.",
-    icon: Award
+    title: "BIT Paper Presentation",
+    highlight: "Technical Honor",
+    role: "Speaker",
+    description: "Presented technical insights on AI-driven intelligent systems and emerging architectures, demonstrating applied understanding of modern AI paradigms.",
+    icon: Award,
+    image: "/certificates/bannari.png",
+    accent: "text-megatron-purple"
   }
 ];
 
 export default function Achievements() {
   return (
-    <section className="space-y-8 relative pb-12">
+    <section className="space-y-12 relative py-12">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="flex items-center gap-4 border-b border-mechanical-border pb-4"
+        className="flex items-center gap-6 border-b border-megatron-gunmetal pb-6"
       >
-        <Trophy className="text-mechanical-accentCyan w-6 h-6" />
-        <h2 className="text-3xl font-mono tracking-wider uppercase text-white">Milestones & Achievements</h2>
+        <div className="p-3 bg-megatron-purple transformer-glow shadow-megatron-glow">
+          <Trophy className="text-white w-8 h-8" />
+        </div>
+        <div>
+          <h2 className="text-4xl font-bold tracking-tighter uppercase text-white">Achievements</h2>
+          <p className="text-megatron-purple font-mono text-sm tracking-widest leading-none mt-2">UNIT: ACHIEVEMENTS_LOG</p>
+        </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {achievements.map((ach, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: idx * 0.1, duration: 0.5 }}
-            className="mechanical-panel p-6 hover:glowing-edge flex flex-col group h-full"
+            transition={{ delay: idx * 0.15, duration: 0.6 }}
+            className="group relative flex flex-col h-full bg-mechanical-dark/40 border border-megatron-gunmetal hover:border-megatron-purple transition-all duration-500 overflow-hidden shadow-2xl"
           >
-            <div className="mb-4 p-3 bg-mechanical-dark rounded-lg inline-block border border-mechanical-border group-hover:border-mechanical-accentCyan transition-colors self-start">
-              <ach.icon className="w-6 h-6 text-mechanical-accent" />
+            {/* Background Texture */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none tech-grid" />
+            
+            {/* Image Section */}
+            <div className="relative h-48 overflow-hidden bg-black/40">
+              <img 
+                src={ach.image} 
+                alt={ach.title} 
+                className="w-full h-full object-contain transition-all duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-mechanical-dark/60 to-transparent" />
+              <div className="absolute top-4 left-4 p-2 bg-mechanical-dark/80 border border-megatron-gunmetal group-hover:border-megatron-purple transition-colors">
+                <ach.icon className={`w-5 h-5 ${ach.accent}`} />
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-white mb-1 group-hover:text-mechanical-accentCyan transition-colors">{ach.title}</h3>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-xs font-mono px-2 py-1 bg-mechanical-border text-gray-300 rounded">{ach.highlight}</span>
-              <span className="text-xs font-mono text-mechanical-accent">{ach.role}</span>
+
+            {/* Content Section */}
+            <div className="p-6 flex flex-col flex-1 relative z-10">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[10px] font-mono px-2 py-0.5 bg-megatron-purple/20 text-megatron-purple border border-megatron-purple/30">
+                  {ach.role}
+                </span>
+                <span className="text-[10px] font-mono text-gray-500 uppercase">IDENTIFIED</span>
+              </div>
+              
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-megatron-purple transition-colors">
+                {ach.title}
+              </h3>
+              
+              <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed mb-6">
+                {ach.description}
+              </p>
+
+              <div className="mt-auto pt-4 border-t border-megatron-gunmetal/30 flex items-center justify-between">
+                <span className="text-xs font-mono text-megatron-purple tracking-widest font-bold">
+                  {ach.highlight}
+                </span>
+                <div className="flex gap-1">
+                  <div className="w-1 h-1 bg-megatron-red" />
+                  <div className="w-1 h-3 bg-megatron-purple animate-pulse" />
+                </div>
+              </div>
             </div>
-            <p className="text-sm text-gray-400 mt-auto leading-relaxed">{ach.description}</p>
+            
+            {/* Side Accent */}
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-megatron-gunmetal group-hover:bg-megatron-purple transition-colors" />
           </motion.div>
         ))}
       </div>
     </section>
   );
 }
+
