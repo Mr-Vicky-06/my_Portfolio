@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+// Deployment Sync: 2026-04-24T11:58:00
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import MinorProjects from "../components/MinorProjects";
